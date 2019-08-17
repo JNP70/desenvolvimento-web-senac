@@ -1,0 +1,21 @@
+ 
+            table, td, tr, th {
+                border: 1px solid;
+                border-collapse: collapse 
+                
+            }
+            #Tabela-secundaria, #Tabela-secundaria td , #Tabela-destacada th{
+                border: 3px solid;
+                border-color: brown;
+                border-collapse: collapse;  
+            }
+            
+            .tabela-destacada, .tabela-destacada td, .tabela-destacada th{             
+                border: 5px solid;
+                border-color: blueviolet;
+                border-collapse: separate; 
+            }
+            
+            th{
+                background: gray;
+            }
