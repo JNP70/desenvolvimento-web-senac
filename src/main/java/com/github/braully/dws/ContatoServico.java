@@ -29,7 +29,7 @@ public class ContatoServico {
         System.out.println("Nova solicitação recebida: " + novaSolicitacao);
 
         solicitacoes.add(novaSolicitacao);
-        return "redirect:/Principal.html";
+        return "redirect:/Principal.xhtml";
 
     }
 
@@ -53,36 +53,34 @@ public class ContatoServico {
                 + "                <td> Nome</td>\n"
                 + "                <td> Email</td>\n"
                 + "                <td>Duvida</td>\n"
-                                    
                 + "            </tr>";
 
-                for(SolicitacaoContato sol : solicitacoes){
-                
-                    String linhaTabela = "<tr>";
-                    //nome
-                    linhaTabela += "<td>";
-                    
-                    linhaTabela += sol.nome;
-                    
-                    linhaTabela += "</td>";
-                    //EMail
-                    linhaTabela += "<td>";
-                    
-                    linhaTabela += sol.email;
-                    
-                    linhaTabela += "</td>";
-                    //duvida
-                    linhaTabela += "<td>";
-                    
-                    linhaTabela += sol.duvida;
-                    
-                    linhaTabela += "</td>";
-                    linhaTabela += "</tr>";
-                    html += linhaTabela;
-                }
-                
-        
-        html = html + "</table>\n <td><a href=\"Contato.html\">Voltar</a>"
+        for (SolicitacaoContato sol : solicitacoes) {
+
+            String linhaTabela = "<tr>";
+            //nome
+            linhaTabela += "<td>";
+
+            linhaTabela += sol.nome;
+
+            linhaTabela += "</td>";
+            //EMail
+            linhaTabela += "<td>";
+
+            linhaTabela += sol.email;
+
+            linhaTabela += "</td>";
+            //duvida
+            linhaTabela += "<td>";
+
+            linhaTabela += sol.duvida;
+
+            linhaTabela += "</td>";
+            linhaTabela += "</tr>";
+            html += linhaTabela;
+        }
+
+        html = html + "</table>\n <td><a href=\"Contato.xhtml\">Voltar</a>"
                 + "        \n"
                 + "        \n"
                 + "    </body>\n"
