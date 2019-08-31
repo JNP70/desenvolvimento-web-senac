@@ -3,6 +3,7 @@ package com.github.braully.dws;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 
 public class ContatoServico {
-
-    List<SolicitacaoContato> solicitacoes = new ArrayList();
+    
+    @Autowired
+     SolicitacaoContatoDAO conexaoBanco;
+   
 
     @RequestMapping("/processar-form-contato")
     public String recebeDadosParaContato(@RequestParam Map<String, String> todosParametros) {
@@ -25,10 +28,10 @@ public class ContatoServico {
         novaSolicitacao.email = todosParametros.get("email");
         novaSolicitacao.duvida = todosParametros.get("duvida");
 
-        System.out.println("Solicitação Anteriores: " + solicitacoes);
+        
         System.out.println("Nova solicitação recebida: " + novaSolicitacao);
 
-        solicitacoes.add(novaSolicitacao);
+        conexaoBanco.save(novaSolicitacao);
         return "redirect:/Principal.xhtml";
 
     }
@@ -55,7 +58,7 @@ public class ContatoServico {
                 + "                <td>Duvida</td>\n"
                 + "            </tr>";
 
-        for (SolicitacaoContato sol : solicitacoes) {
+        for (SolicitacaoContato sol : conexaoBanco.findAll()) {
 
             String linhaTabela = "<tr>";
             //nome
