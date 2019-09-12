@@ -1,10 +1,12 @@
 
 package com.github.braully.dws;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Usuario {
@@ -21,6 +23,9 @@ public class Usuario {
     @Basic
     String senha;
 
+    @ManyToMany
+    Set<Grupo> gruposUsuario;
+    
     public String getLogin() {
         return login;
     }
