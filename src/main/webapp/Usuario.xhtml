@@ -2,6 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:composition template="/Principal.xhtml">
@@ -12,9 +13,20 @@
 
                 <div class="col-9">
                     <h:form>
+                        <h:messages style="list-style: none;"
+                            infoClass="alert alert-success" 
+                                errorClass="alert alert-danger" 
+                                showSummary="true"></h:messages>
+                        
                         <div class="form-group">
                             <label>Login</label>
-                            <h:inputText class="form-control" value="#{usuarioMB.usuario.login}"/>
+                            <h:inputText class="form-control"
+                                         validatorMessage="O campo Login é obrigatorio"
+                                         value="#{usuarioMB.usuario.login}">
+                            <f:validateRequired>
+                            </f:validateRequired>
+
+                            </h:inputText>
                         </div>
                         <div class="form-group">
                             <label>Senha</label>
@@ -22,9 +34,9 @@
                                 <small class="form-text text-muted">Suave Tio, não compartilhamos vossos dados!.</small>                         
                         </div>
                         
-                        <button class="btn btn-outline-warning" action="#{usuarioMB.salvarUsuario()}"
-                                jsf="h:commandButton" value="Salvar">Salvar</button>
-
+                        <h:commandButton class="btn btn-outline-warning" action="#{usuarioMB.salvarUsuario()}"
+                                value="Salvar"/>
+                        
                     </h:form>  
                 </div>
 
