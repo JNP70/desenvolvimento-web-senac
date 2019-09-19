@@ -1,10 +1,13 @@
 
 package com.github.braully.dws;
 
+import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Grupo {
@@ -12,10 +15,15 @@ public class Grupo {
     @Id
     @GeneratedValue
     private Long id;
+    
+    @Column(unique = true)
     @Basic
     String  nome;
     @Basic
     String descricao; 
+    
+    @ManyToMany
+    Set<Grupo> gruposUsuario;
 
     public Long getId() {
         return id;
@@ -40,4 +48,6 @@ public class Grupo {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
+    
 }
