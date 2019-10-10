@@ -1,0 +1,49 @@
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th> Id</th>
+                <th> Nome</th>
+                <th> Email</th>
+                <th> Duvida</th>
+            </tr>
+
+
+
+            <script>
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                var tabela = document.getElementByTagName("table")[0]
+                var solucom = JSON.parse(this.responseText);
+                for( var i = 0; i < solucom.length; i++){
+
+                var solucom = solucom(i);
+                var row = "<tr>";
+                row = row + "<td>" + solucom.Id + "<td>";
+                row = row + "<td>" + solucom.Nome + "<td>";
+                row = row + "<td>" + solucom.Email + "<td>";
+                row = row + "<td>" + solucom.Duvida + "<td>";
+                row = row + "<tr>"
+
+                var tr = document.createElement("tr");
+                tr.innerHTML = row;
+                tabela.appendChild(tr);
+
+                } 
+                }
+                }
+                xhttp.open("GET", "/contato/todos-ws", true);
+                xhttp.send();
+
+            </script>
+        </table>
+    </body>
+</html>

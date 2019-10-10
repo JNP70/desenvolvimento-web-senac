@@ -85,9 +85,10 @@ public class AplicacaoWeb extends WebSecurityConfigurerAdapter implements Servle
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/Principal.xhtml").permitAll()
                 .antMatchers("/login*").permitAll()
-                .antMatchers("/todas-solicitacoes").hasRole("fodao")
+                //.antMatchers("/Principal.xhtml").permitAll()
+                
+                //.antMatchers("/todas-solicitacoes").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login.html").loginProcessingUrl("/login")
                 .permitAll().and()
