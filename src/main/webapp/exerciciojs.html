@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    </head>
+    <body>
+        <h1>Exercicio JS</h1>
+        <table id="tabela" class="table table-bordered">
+
+
+        </table> 
+        <script>
+            $.get('/contato/todos-ws').done(function(data){
+                for(i=0; i < data.length; i++){
+
+                $('#tabela').append(
+                        $('<tr></tr>').append(
+                            $('<td></td>').text(data[i].nome),
+                            $('<td></td>').text(data[i].email),
+                            $('<td></td>').text(data[i].duvida)
+                        )
+                );
+                }
+                paragrafo.innerHTML = linhas;
+            });
+        </script>
+    </body>
+</html>
